@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="stylesheet" href="./styleSheet.css">
+
+  <title>Frontend Mentor | Age calculator app</title>
+</head>
+
+<body>
+  <script src="ageCalculator.js"></script>
+
+  <main class="main">
+    <form onsubmit="printSubmit(event)">
+      <section class="input-section">
+        <div>
+          <label for="days-input">Day</label>
+          <input id="days-input" name="days-input" type="number" placeholder="DD" minlength="2" maxlength="2"
+            oninput="getDays()" required />
+        </div>
+        <div>
+          <label for="months-input">Month</label>
+          <input id="months-input" name="months-input" type="number" placeholder="MM" minlength="2" maxlength="2"
+            oninput="getMonths()" required />
+        </div>
+        <div>
+          <label for="years-input">Year</label>
+          <input id="years-input" name="years-input" type="number" placeholder="YYYY" minlength="4" maxlength="4"
+            oninput="getYears()" required />
+        </div>
+      </section>
+      <section class="button-section">
+        <hr />
+        <button id="buttonStyles" type="submit"><svg id="buttonSvg" xmlns="http://www.w3.org/2000/svg" width="46" height="44" viewBox="0 0 46 44">
+            <g fill="none" stroke="#FFF" stroke-width="2">
+              <path d="M1 22.019C8.333 21.686 23 25.616 23 44M23 44V0M45 22.019C37.667 21.686 23 25.616 23 44" />
+            </g>
+          </svg></button>
+      </section>
+    </form>
+    <section>
+      <h1><span class="output" id="years-output">--</span> years</h1>
+      <h1><span class="output" id="months-output">--</span> months</h1>
+      <h1><span class="output" id="days-output">--</span> days</h1>
+    </section>
+  </main>
+</body>
+
+</html>
