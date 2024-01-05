@@ -2,22 +2,27 @@
     font-family: poppins;
     src: url(assets/fonts/Poppins-Regular.ttf);
 }
+
 @font-face {
     font-family: poppinsBold;
     src: url(assets/fonts/Poppins-Bold.ttf);
 }
+
 @font-face {
     font-family: poppinsBoldItalic;
     src: url(assets/fonts/Poppins-BoldItalic.ttf);
 }
+
 @font-face {
     font-family: poppinsExtraBold;
     src: url(assets/fonts/Poppins-ExtraBold.ttf);
 }
+
 @font-face {
     font-family: poppinsExtraBoldItalic;
     src: url(assets/fonts/Poppins-ExtraBoldItalic.ttf);
 }
+
 @font-face {
     font-family: poppinsItalic;
     src: url(assets/fonts/Poppins-Italic.ttf);
@@ -32,7 +37,7 @@ body {
 }
 
 .main {
-    width: 30%;
+    width: 35%;
     margin: auto;
     background-color: hsl(0, 0%, 100%);
     padding: 32px;
@@ -40,32 +45,84 @@ body {
     box-shadow: 0px 0px 10px hsl(0, 0%, 86%);
 }
 
+@media screen and (max-width: 425px) {
+    .main {
+        width: 75%;
+    }
+    .input-section > div {
+        width: 100% !important;
+    }
+    hr {
+        margin: 20% 0 !important;
+    }
+    .button-section>button {
+        right: 30% !important;
+    }
+    h1 {
+        font-size: 30px !important;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .main {
+        width: 60%;
+    }
+}
+
 .input-section {
     display: flex;
-    /* flex-direction: row; */
-    gap: 10%;
+    gap: 5%;
     font-family: poppinsBold;
     font-size: small;
     color: hsl(0, 1%, 44%);
 }
 
-.input-section > div {
-    width: 25%;
+.input-section>div {
+    width: 20%;
 }
 
-.input-section > div > input {
+.input-section>div>input {
     padding: 10%;
     font-size: 16px;
     color: hsl(0, 0%, 8%);
     font-family: poppinsBold;
     width: 80%;
+    border: 1px solid hsl(0, 0%, 86%);
+    border-radius: 4px;
+    margin-top: 5%;
+    transition: border-color 0.3s ease;
+
+    &:active,
+    &:focus {
+        border: 1px solid hsl(259, 100%, 65%);
+        outline: none;
+        caret-color: hsl(259, 100%, 65%);
+    }
+}
+
+#days-error,
+#months-error,
+#years-error {
+    font-family: poppinsItalic;
+    color: red;
+    font-size: xx-small;
+    display: block;
+    white-space: nowrap;
+}
+
+.text-error {
+    color: red;
+}
+
+.input-error {
+    border: 1px solid red !important;
 }
 
 .button-section {
     position: relative;
 }
 
-.button-section > button {
+.button-section>button {
     padding: 0;
     border: 0;
     background-color: transparent;
@@ -80,6 +137,7 @@ body {
     border-radius: 90px;
     cursor: pointer;
 }
+
 #buttonSvg:active {
     background-color: hsl(0, 0%, 8%);
     padding: 16px;
@@ -99,4 +157,3 @@ h1 {
 hr {
     margin: 12% 0;
 }
-
