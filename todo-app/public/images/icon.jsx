@@ -17,3 +17,19 @@ export const MoonIcon = (props) => (
     />
   </svg>
 );
+
+export const CheckIcon = (props) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={11} height={9} {...props}>
+    <path fill="none" stroke="#FFF" strokeWidth={2} d="M1 4.304 3.696 7l6-6" />
+  </svg>
+);
+
+export const CrossIcon = (props) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={18} height={18} {...props}>
+    <path
+      fill="#494C6B"
+      fillRule="evenodd"
+      d="m16.97 0 .708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z"
+    />
+  </svg>
+);

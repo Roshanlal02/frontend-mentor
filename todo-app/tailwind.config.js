@@ -14,7 +14,9 @@ module.exports = {
       },
       colors: {
         'primary-blue': 'hsl(220, 98%, 61%)',
-        'bg-gradient': 'linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%)',
+        'bg-gradient': 'linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%))',
+        'gr-one': 'hsl(192, 100%, 67%)',
+        'gr-two': 'hsl(280, 87%, 65%)',
         // light theme
         'very-light-gray': 'hsl(0, 0%, 98%)',
         'very-light-grayish-blue': 'hsl(236, 33%, 92%)',
