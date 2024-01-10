@@ -5,3 +5,17 @@
 body {
   font-size: medium;
 }
+
+input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: 2px solid hsl(236, 33%, 92%);
+  border-radius: 50%;
+  /* outline: none; */
+  cursor: pointer;
+}
+
+input[type="radio"]:hover {
+  border-image: 2px solid linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+}
