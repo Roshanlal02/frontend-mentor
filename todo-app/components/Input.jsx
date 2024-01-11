@@ -15,9 +15,10 @@ const Input = () => {
   }, [inputVal]);
 
   return (
-    <div className="flex px-5 py-5 gap-4 items-center bg-very-light-gray dark:bg-very-dark-desaturated-blue rounded-md">
+    <div className="flex px-5 py-5 gap-4 items-center bg-white dark:bg-very-dark-desaturated-blue rounded-md">
       <input
         checked={radioCheck}
+        onChange={() => null}
         type="radio"
         className="w-6 h-6 hover:border-blue-300 checked:border-none checked:bg-gradient-to-r from-gr-one to-gr-two"
       />

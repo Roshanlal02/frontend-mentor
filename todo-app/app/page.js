@@ -3,6 +3,7 @@ import Image from "next/image";
 import bgDeskLight from "../public/images/bg-desktop-light.jpg";
 import bgDeskDark from "../public/images/bg-desktop-dark.jpg";
 import Input from "@/components/Input";
+import TodoList from "@/components/TodoList";
 
 export default function Home() {
   return (
@@ -30,8 +31,11 @@ export default function Home() {
             <ThemeSwitch />
           </div>
         </section>
-        <section id="inpustSec" className="mt-3">
+        <section id="inputSec" className="mt-3">
           <Input />
+        </section>
+        <section id="listSec" className="mt-3">
+          <TodoList />
         </section>
       </section>
     </main>
