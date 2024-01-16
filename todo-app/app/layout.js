@@ -1,6 +1,7 @@
 import { Josefin_Sans } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
+import { ReduxProvider } from "@/redux/provider";
 
 const josefin = Josefin_Sans({ subsets: ["latin"] });
 
@@ -11,9 +12,11 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" suppressContentEditableWarning>
+    <html lang="en" suppressHydrationWarning>
       <body className={josefin.className}>
-        <Providers>{children}</Providers>
+        <ReduxProvider>
+          <Providers>{children}</Providers>
+        </ReduxProvider>
       </body>
     </html>
   );
