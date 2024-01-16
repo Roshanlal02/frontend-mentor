@@ -3,16 +3,19 @@
 import { useEffect, useState } from "react";
 import { IoCloseOutline } from "react-icons/io5";
 
-const List = ({ data }) => {
+const List = ({ data, setCallBack }) => {
   const [radioCheck, setRadioCheck] = useState(false);
+  const [cb, setCb] = useState(false);
 
   const handleTask = () => {
+    setCb(!cb)
     setRadioCheck(!radioCheck);
     if (data.status === "Completed") {
       data.status = "Active";
     } else {
       data.status = "Completed";
     }
+    setCallBack(cb)
   };
 
   useEffect(() => {
