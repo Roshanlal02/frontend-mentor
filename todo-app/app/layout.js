@@ -12,8 +12,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={josefin.className}>
+    <html lang="en" suppressHydrationWarning={true}>
+      <body className={`${josefin.className} bg-very-light-gray dark:bg-very-dark-blue`}>
         <ReduxProvider>
           <Providers>{children}</Providers>
         </ReduxProvider>

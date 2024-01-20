@@ -5,9 +5,9 @@ const RadioButton = ({ check, handleChange }) => {
     <div className="flex relative">
       <input
         checked={check}
-        onChange={() => handleChange()}
+        onChange={handleChange}
         type="radio"
-        className="w-6 h-6 hover:border-blue-300 checked:border-none checked:bg-gradient-to-r from-gr-one to-gr-two"
+        className="w-6 h-6 max-sm:w-5 max-sm:h-5 hover:border-blue-300 checked:border-none checked:bg-gradient-to-r from-gr-one to-gr-two"
       />
       {check && (
         <svg
@@ -19,7 +19,7 @@ const RadioButton = ({ check, handleChange }) => {
           <path
             fill="none"
             stroke="#FFF"
-            stroke-width="2"
+            strokeWidth="2"
             d="M1 4.304L3.696 7l6-6"
           />
         </svg>
