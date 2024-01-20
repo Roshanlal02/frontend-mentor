@@ -9,16 +9,15 @@ const TodoList = () => {
   const [tab, setTab] = useState("All");
   const [taskRem, setTaskRem] = useState(0);
   const [taskRemCall, setTaskRemCall] = useState();
+  const activeData = useAppSelector((state) =>
+    state.todo.filter((item) => item.status === "Active")
+  );
+  const completedData = useAppSelector((state) =>
+    state.todo.filter((item) => item.status === "Completed")
+  );
+  const allData = useAppSelector((state) => state.todo);
   let todo =
-    tab !== "All"
-      ? tab === "Active"
-        ? useAppSelector((state) =>
-            state.todo.filter((item) => item.status === "Active")
-          )
-        : useAppSelector((state) =>
-            state.todo.filter((item) => item.status === "Completed")
-          )
-      : useAppSelector((state) => state.todo);
+    tab !== "All" ? (tab === "Active" ? activeData : completedData) : allData;
   const todoForRemNum = useAppSelector((state) => state.todo);
   const dispatch = useAppDispatch();
   const [draggingItem, setDraggingItem] = useState(null);
