@@ -1,12 +1,22 @@
 "use client";
 
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { useAppDispatch, } from "@/redux/hooks";
 import { useEffect, useState } from "react";
 import { IoCloseOutline } from "react-icons/io5";
-import { markCompleted, removeTask } from "@/redux/features/todoSlice";
+import {
+  markCompleted,
+  removeTask,
+} from "@/redux/features/todoSlice";
 import RadioButton from "./RadioButton";
 
-const List = ({ data, setCallBack }) => {
+const List = ({
+  data,
+  setCallBack,
+  onDragStart,
+  onDragEnd,
+  onDragOver,
+  onDrop,
+}) => {
   const [radioCheck, setRadioCheck] = useState(false);
   const [cb, setCb] = useState(false);
   const dispatch = useAppDispatch();
@@ -26,12 +36,18 @@ const List = ({ data, setCallBack }) => {
 
   const handleComplete = () => {
     dispatch(removeTask(data));
-    console.log(data);
   };
 
   return (
-    <div className="flex px-5 py-5 gap-4 items-center bg-white dark:bg-very-dark-desaturated-blue border-b-[1px] border-very-light-gray dark:border-opacity-50 group cursor-pointer">
-      <RadioButton check={radioCheck} handleChange={handleTask} />
+    <div
+      className="flex p-5 max-sm:p-3 gap-4 items-center bg-white dark:bg-very-dark-desaturated-blue border-b-[1px] border-very-light-gray dark:border-opacity-50 group cursor-pointer"
+      draggable="true"
+      onDragStart={(e) => onDragStart(e, data)}
+      onDragEnd={onDragEnd}
+      onDragOver={onDragOver}
+      onDrop={(e) => onDrop(e, data)}
+    >
+      <RadioButton check={radioCheck} handleChange={() => handleTask()} />
       <span
         className={`min-w-[80%] bg-transparent focus:border-none active:border-none border-none outline-none text-dark-grayish-blue ${
           data.status === "Completed" ? "line-through opacity-30" : ""

@@ -1,34 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = [
-  {
-    id: 1,
-    task: "This is the task",
-    status: "Active",
-  },
-  {
-    id: 2,
-    task: "This is the task",
-    status: "Active",
-  },
-  {
-    id: 3,
-    task: "This is the task",
-    status: "Completed",
-  },
-  {
-    id: 4,
-    task: "This is the task",
-    status: "Completed",
-  },
-];
+const initialState = []
 
 export const todoList = createSlice({
   name: "todoList",
   initialState,
   reducers: {
     addTodo: (state, action) => {
-      state.push({
+      state?.push({
         id: action.payload.id,
         task: action.payload.input,
         status: "Active",
@@ -48,8 +27,29 @@ export const todoList = createSlice({
     clearCompleted: (state, action) => {
       return state.filter((item) => item.status !== "Completed");
     },
+    modifyOrder: (state, action) => {
+      if (!action.payload) return;
+
+      const currentIndex = state.findIndex((object) => {
+        return object.id === action.payload.draggingItem.id;
+      });
+      const targetIndex = state.findIndex((object) => {
+        return object.id === action.payload.dropItem.id;
+      });
+
+      if (currentIndex !== -1 && targetIndex !== -1) {
+        state.splice(currentIndex, 1);
+        state.splice(targetIndex, 0, action.payload.draggingItem);
+      }
+    },
   },
 });
 
-export const { addTodo, markCompleted, removeTask, clearCompleted } = todoList.actions;
+export const {
+  addTodo,
+  markCompleted,
+  removeTask,
+  clearCompleted,
+  modifyOrder,
+} = todoList.actions;
 export default todoList.reducer;
