@@ -3,7 +3,11 @@
 import { Fragment, useEffect, useState } from "react";
 import List from "./List";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { clearCompleted, modifyOrder } from "@/redux/features/todoSlice";
+import {
+  clearCompleted,
+  modifyOrder,
+  setInitialState,
+} from "@/redux/features/todoSlice";
 
 const TodoList = () => {
   const [tab, setTab] = useState("All");
@@ -59,12 +63,19 @@ const TodoList = () => {
     dispatch(modifyOrder({ draggingItem, dropItem }));
   };
 
+  useEffect(() => {
+    const todoFromLocal = localStorage.getItem("todoObj");
+    if (todoFromLocal) {
+      dispatch(setInitialState(JSON.parse(todoFromLocal)));
+    }
+  }, []);
+
   return (
     <Fragment>
       <div className="bg-white dark:bg-very-dark-desaturated-blue rounded-md py-2 max-sm:py-1">
         {todo.length > 0 ? (
           <div>
-            {todo.map((list) => (
+            {todo?.map((list) => (
               <List
                 data={list}
                 key={list?.id}
