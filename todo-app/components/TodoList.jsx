@@ -5,6 +5,8 @@ import List from "./List";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import {
   clearCompleted,
+  getActiveTodos,
+  getCompletedTodos,
   modifyOrder,
   setInitialState,
 } from "@/redux/features/todoSlice";
@@ -13,11 +15,9 @@ const TodoList = () => {
   const [tab, setTab] = useState("All");
   const [taskRem, setTaskRem] = useState(0);
   const [taskRemCall, setTaskRemCall] = useState();
-  const activeData = useAppSelector((state) =>
-    state.todo.filter((item) => item.status === "Active")
-  );
-  const completedData = useAppSelector((state) =>
-    state.todo.filter((item) => item.status === "Completed")
+  const activeData = getActiveTodos(useAppSelector((state) => state.todo));
+  const completedData = getCompletedTodos(
+    useAppSelector((state) => state.todo)
   );
   const allData = useAppSelector((state) => state.todo);
   let todo =
