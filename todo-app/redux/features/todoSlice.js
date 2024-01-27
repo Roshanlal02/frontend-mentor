@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSelector, createSlice } from "@reduxjs/toolkit";
 
 const initialState = [];
 
@@ -69,3 +69,13 @@ export const {
   modifyOrder,
 } = todoList.actions;
 export default todoList.reducer;
+
+const getState = (state) => state;
+
+export const getActiveTodos = createSelector([getState], (todos) =>
+  todos.filter((item) => item.status === "Active")
+);
+
+export const getCompletedTodos = createSelector([getState], (todos) =>
+  todos.filter((item) => item.status === "Completed")
+);

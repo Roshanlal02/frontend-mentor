@@ -39,7 +39,7 @@ export default function Home() {
         <section id="listSec" className="mt-3 max-sm:mt-0">
           <TodoList />
         </section>
-        <section id="listSec" className="mt-3 justify-center flex max-sm:text-sm">
+        <section id="helperTextSec" className="mt-3 justify-center flex max-sm:text-sm">
           Drag and drop to reorder list
         </section>
       </section>
