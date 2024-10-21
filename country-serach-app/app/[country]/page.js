@@ -28,7 +28,8 @@ export default function Home() {
         <div className="mx-16 mb-12 flex gap-16 justify-between items-center">
           <div className="w-[50%]">
             <Image
-              src={data[0]?.flags?.png}
+              src={data[0]?.flags?.svg}
+              alt={data[0]?.flags?.alt}
               width={200}
               height={200}
               style={{ width: "100%", height: "auto" }}
@@ -100,8 +101,9 @@ export default function Home() {
                   <div className="grid grid-cols-4 max-sm:grid-cols-2 gap-2">
                     {data[0]?.borders?.map((i) => (
                       <Link
+                        key={i}
                         href={i}
-                        className="border border-gray-400 shadow-md px-6 py-1 rounded-sm"
+                        className="border border-gray-400 shadow-md flex justify-center px-4 py-1 rounded-sm text-sm"
                       >
                         {i}
                       </Link>
