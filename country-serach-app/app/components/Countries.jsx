@@ -4,11 +4,14 @@ import { useEffect, useState } from "react";
 import Card from "./Card";
 import { Select, Input } from "antd";
 import { IoSearchSharp } from "react-icons/io5";
+import Spinner from "./Spinner";
 
 function Countries() {
   const [data, setData] = useState([]);
   const [regions, setRegion] = useState([]);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
+    setLoading(true);
     let regionList = [];
     fetch("https://restcountries.com/v3.1/all")
       .then((response) => response.json())
@@ -23,20 +26,24 @@ function Countries() {
         const list = [];
         regionList.forEach((i) => list.push({ value: i, label: i }));
         setRegion(list);
+        setLoading(false);
       })
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
 
   const selectRegion = (e) => {
+    setLoading(true);
     fetch(`https://restcountries.com/v3.1/region/${e.toLowerCase()}`)
       .then((response) => response.json())
       .then((data) => {
         setData(data);
+        setLoading(false);
       })
       .catch((error) => console.error("Error fetching data:", error));
   };
 
   const handleInputSearch = (e) => {
+    setLoading(true);
     if (e.target.value.length > 0) {
       fetch(
         `https://restcountries.com/v3.1/name/${e.target.value.toLowerCase()}?fullText=false`
@@ -44,6 +51,7 @@ function Countries() {
         .then((response) => response.json())
         .then((data) => {
           setData(data);
+          setLoading(false);
         })
         .catch((error) => {
           console.error("Error fetching data:", error), setData([]);
@@ -53,6 +61,7 @@ function Countries() {
         .then((response) => response.json())
         .then((data) => {
           setData(data);
+          setLoading(false);
         })
         .catch((error) => console.error("Error fetching data:", error));
     }
@@ -60,34 +69,42 @@ function Countries() {
 
   return (
     <>
-      <div className="flex justify-between mx-16 my-12">
-        <Input
-          size="middle"
-          placeholder="Search for a country..."
-          style={{ width: "30%", padding: "1% 2%" }}
-          prefix={<IoSearchSharp />}
-          onChange={handleInputSearch}
-        />
-        <Select
-          defaultValue="Filter by Region"
-          size="large"
-          style={{ width: 200 }}
-          onChange={selectRegion}
-          options={regions?.length > 0 ? regions : []}
-          loading={regions?.length === 0}
-        />
-      </div>
-      <div className="mx-16 mb-12">
-        <div className="grid grid-cols-4 gap-14 max-sm:grid-cols-1 max-md:grid-cols-2">
-          {data.length > 0 ? (
-            data?.map((country, index) => (
-              <Card country={country} key={index} />
-            ))
-          ) : (
-            <>No Countries found</>
-          )}
+      <div className="flex flex-row max-sm:flex-col max-sm:gap-8 justify-between mx-16 my-12 max-md:mt-28 max-md:mb-12">
+        <div className="w-[30%] max-sm:w-full flex">
+          <Input
+            size="middle"
+            placeholder="Search for a country..."
+            style={{ padding: "1% 2%" }}
+            prefix={<IoSearchSharp />}
+            onChange={handleInputSearch}
+          />
+        </div>
+        <div>
+          <Select
+            defaultValue="Filter by Region"
+            size="large"
+            style={{ width: 200 }}
+            onChange={selectRegion}
+            options={regions?.length > 0 ? regions : []}
+            loading={regions?.length === 0}
+          />
         </div>
       </div>
+      {loading ? (
+        <Spinner />
+      ) : (
+        <div className="mx-16 mb-12 max-sm:mx-24">
+          <div className="grid grid-cols-4 gap-14 max-sm:grid-cols-1 max-md:grid-cols-2">
+            {data.length > 0 ? (
+              data?.map((country, index) => (
+                <Card country={country} key={index} />
+              ))
+            ) : (
+              <>No Countries found</>
+            )}
+          </div>
+        </div>
+      )}
     </>
   );
 }
