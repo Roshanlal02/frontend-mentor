@@ -8,6 +8,7 @@ function Card({country}) {
       <div>
         <Image
           src={country?.flags?.svg}
+          alt={country?.flags?.alt}
           width={200}
           height={200}
           style={{ width: "auto", height: "auto" }}
