@@ -77,6 +77,7 @@ function Countries() {
             style={{ padding: "1% 2%" }}
             prefix={<IoSearchSharp />}
             onChange={handleInputSearch}
+            className="dark:!bg-dark-mode-elements bg-light-mode-elements dark:!text-dark-mode-text !text-light-mode-text !border-0 !rounded-md !shadow-md"
           />
         </div>
         <div>
@@ -87,6 +88,7 @@ function Countries() {
             onChange={selectRegion}
             options={regions?.length > 0 ? regions : []}
             loading={regions?.length === 0}
+            className="[&>div]:dark:!bg-dark-mode-elements [&>div]:bg-light-mode-elements [&>div]:dark:!text-dark-mode-text [&>div]:!text-light-mode-text [&>div]:!border-0 [&>div]:!rounded-md [&>div]:!shadow-md"
           />
         </div>
       </div>
