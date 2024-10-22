@@ -8,7 +8,7 @@ function Card({country}) {
       <div>
         <Image
           src={country?.flags?.svg}
-          alt={country?.flags?.alt}
+          alt={country?.flags?.alt ?? ""}
           width={200}
           height={200}
           style={{ width: "auto", height: "auto" }}
@@ -16,7 +16,7 @@ function Card({country}) {
         />
       </div>
       <div className="px-6 pt-6 pb-8">
-        <h3 className="pb-4 font-semibold text-lg">{country?.name?.common}</h3>
+        <h2 className="pb-4 font-semibold text-lg">{country?.name?.common}</h2>
         <p className="font-semibold pb-1">
           Population: <span className="font-normal">{country?.population}</span>
         </p>

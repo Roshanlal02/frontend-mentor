@@ -38,7 +38,7 @@ export default function Home() {
             <div className="w-[50%] max-sm:w-full">
               <Image
                 src={data[0]?.flags?.svg}
-                alt={data[0]?.flags?.alt}
+                alt={data[0]?.flags?.alt ?? ""}
                 width={200}
                 height={200}
                 style={{ width: "100%", height: "auto" }}
